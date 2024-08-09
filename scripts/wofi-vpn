@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+ICON="$(sed '1,/^### DATA ###$/d' $0 | wofi -H 400 -W 600 --show dmenu -i | cut -d ' ' -f 1 | tr -d '\n')"
+
+/home/me/.config/scripts/wireguard.py $ICON
+
+exit
+
+### DATA ###
+󰟐 proton
+󰋜 homeserver
+󱩆 no vpn

@@ -1,0 +1,176 @@
+(defvar vpnpoll "󱩆  ")
+
+(defpoll weatherpoll_temperature  :interval "600s" "/home/me/.config/scripts/weather.py")
+
+(defwidget vpn []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "end"
+       :class "vpn"
+  (button :onclick ""
+    :class "vpnbutton" vpnpoll)))
+
+(defpoll batterypoll :interval "2s" "/home/me/.config/scripts/battery.py")
+
+(defwidget battery []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "end"
+       :class "battery"
+  (button :onclick ""
+    :class "batterybutton" batterypoll)))
+
+(defvar brightnesspoll "󰃡")
+
+(defwidget brightness []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "end"
+       :class "brightness"
+  (button :onclick ""
+    :class "brightnessbutton" brightnesspoll)))
+
+(defvar volumepoll "󱄡")
+
+(defwidget volume []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "end"
+       :class "volume"
+  (button :onclick ""
+    :class "volumebutton" volumepoll)))
+
+
+(defvar internetpoll "󱛄")
+
+(defwidget internet []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "end"
+       :class "internet"
+  (button :onclick ""
+    :class "internetbutton" internetpoll)))
+
+(defvar languagepoll "de 󰌌")
+(defwidget language []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "end"
+       :class "language"
+  (button :onclick ""
+    :class "languagebutton" languagepoll)))
+
+(defwidget blatt []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "start"
+       :class "blatt"
+"󰣇"))
+
+(defpoll updatepoll :interval "600s" "/home/me/.config/scripts/checkupdates.sh")
+
+(defwidget updates []
+  (box :orientation "h"
+       :space-evenly "true"
+       :halign "center"
+       :class "updates"
+(button :onclick ""
+  :class "updatebutton" updatepoll)))
+
+(defwidget weather []
+  (box :orientation "h"
+       :space-evenly "true"
+       :halign "center
+       :class weather"
+  (button :onclick ""
+    :class "weatherdaybutton_weather" weatherpoll_temperature)))
+
+
+(defpoll datumpoll :interval "1s" "echo $(date +%d-%m-%Y) 󰃭")
+
+(defwidget datum []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "start"
+       :class "datum"
+  (button :onclick ""
+    :class "datumbutton" datumpoll)))
+
+(defpoll uhrzeitpoll  :interval "1s" "/home/me/.config/scripts/clock.sh")
+
+(defwidget uhrzeit []
+  (box :orientation "h"
+      :space-evenly "false"
+      :halign "start"
+      :class "uhrzeit"
+  (button :onclick ""
+    :class "uhrzeitbutton" uhrzeitpoll)))
+
+(defwidget right []
+  (box :orientation "h"
+      :space-evenly "false"
+      :halign "end"
+      :class "rechteseite"
+(language)(internet)(volume)(brightness)(vpn)(battery)))
+
+(defwidget middle []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "center"
+       :class "mittlereseite"
+      (updates)(weather)))
+
+(defwidget left []
+  (box :orientation "h"
+      :space-evenly "false"
+      :halign "start"
+      :class "linkeseite"
+(blatt)(uhrzeit)(datum)))
+
+(defwidget bar []
+  (box :class "eww_bar"
+    :orientation "h"
+    :space-evenly "true"
+    :vexpand "false"
+    :hexpand "false"
+(left)(middle)(right)))
+
+
+(defwindow bar_window
+  :monitor 1
+  :geometry (geometry :x "0px"
+                      :y "0px"
+                      :width "100%"
+                      :height "38px"
+                      :anchor "top center")
+  :stacking "bg"
+  :exclusive "true"
+(bar))
+
+(defpoll daypoll  :interval "1s" "echo $(date +%A)!")
+
+
+(defwidget weatherday []
+  (box :orientation "h"
+       :space-evenly "false"
+       :halign "center"
+       :class "weatherday"
+  (button :onclick ""
+    :class "weatherdaybutton_day" daypoll))) 
+(defwidget information []
+  (box :class "information_screen"
+       :orientation "v"
+       :vexpand "false"
+       :hexpand "false"
+(weatherday)))
+
+(defwindow screen_widget
+  :monitor 1
+  :geometry (geometry :x "80px"
+                      :y "50px"
+                      :width "200px"
+                      :height "100px"
+                      :anchor "bottom right")
+  :stacking "bg"
+  :exclusive "false"
+(information))

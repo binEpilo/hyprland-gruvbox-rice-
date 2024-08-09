@@ -1,0 +1,75 @@
+//colors
+
+@import 'gruvbox.scss';
+
+* {
+  all: unset;
+}
+
+.eww_bar {
+  background-color: $background;
+  //margin: 7px 50px 7px 50px;
+  //border-radius: 15px;
+  //box-shadow: 0px 0px 5px #000000;
+  color: $text;
+}
+
+.linkeseite {
+  margin: 0px 0px 0px 30px;
+} 
+
+.rechteseite {
+  margin: 0px 30px 0px 0px
+}
+
+.uhrzeitbutton {
+  color: $text;
+  margin: 0px 20px 0px 0px;
+}
+
+.languagebutton {
+  color: $text;
+  margin: 0px 20px 0px 0px;
+}
+
+.information_screen {
+  //background-color: rgba($background, 0.5);
+  border-radius: 7px;
+}
+
+.blatt {
+  color: $accent;
+  margin: 0px 20px 0px 0px;
+}
+
+.volume {
+  margin: 0px 10px 0px 0px;
+  font-size: 18px;
+};
+
+.weatherdaybutton_day {
+  font-family: "Baristo"; //Genorict DEMO; Permanent Marker; Baristo; Classic Couture
+  font-size: 70px;
+  color: $accent;
+};
+
+.weatherdaybutton_weather {
+  margin: 0px 0px 0px 0px;
+}
+
+.updates {
+  margin: 0px 15px 0px 0px;
+}
+
+.vpn {
+  font-size: 16px;
+  margin: 0px 5px 0px 0px
+}
+
+.internetbutton {
+  margin: 0px 12px 0px 0px;
+}
+
+.brightnessbutton {
+  margin: 0px 20px 0px 0px;
+}

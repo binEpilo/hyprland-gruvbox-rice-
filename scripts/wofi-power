@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -euo pipefail
+
+ICON="$(sed '1,/^### DATA ###$/d' $0 | wofi -H 400 -W 600 --show dmenu -i | cut -d ' ' -f 1 | tr -d '\n')"
+
+if [ "$ICON" = "󰐥" ]; then
+  poweroff
+elif [ "$ICON" = "󰜉" ]; then
+  reboot
+elif [ "$ICON" = "󰍃" ]; then
+  /home/me/.config/scripts/logout.sh
+fi
+
+exit
+
+### DATA ###
+󰐥 poweroff
+󰜉 reboot
+󰍃 logout
